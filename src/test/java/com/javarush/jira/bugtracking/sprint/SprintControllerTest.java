@@ -9,8 +9,8 @@ import org.springframework.security.test.context.support.WithUserDetails;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import static com.javarush.jira.bugtracking.sprint.SprintTestData.NOT_FOUND;
 import static com.javarush.jira.bugtracking.sprint.SprintTestData.*;
+import static com.javarush.jira.bugtracking.sprint.SprintTestData.NOT_FOUND;
 import static com.javarush.jira.common.BaseHandler.REST_URL;
 import static com.javarush.jira.common.util.JsonUtil.writeValue;
 import static com.javarush.jira.login.internal.web.UserTestData.*;
