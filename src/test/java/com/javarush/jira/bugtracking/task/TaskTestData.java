@@ -19,7 +19,7 @@ public class TaskTestData {
     public static final MatcherFactory.Matcher<TaskTo> TASK_TO_MATCHER = MatcherFactory.usingIgnoringFieldsComparator(TaskTo.class, "id", "startpoint", "endpoint");
     public static final MatcherFactory.Matcher<TaskToFull> TASK_TO_FULL_MATCHER = MatcherFactory.usingIgnoringFieldsComparator(TaskToFull.class, "id", "updated", "activityTos.id");
     public static final MatcherFactory.Matcher<Activity> ACTIVITY_MATCHER = MatcherFactory.usingIgnoringFieldsComparator(Activity.class, "title", "updated", "author");
-    public static final MatcherFactory.Matcher<UserBelong> USER_BELONG_MATCHER = MatcherFactory.usingIgnoringFieldsComparator(UserBelong.class, "id", "startpoint", "endpoint");
+    public static final MatcherFactory.Matcher<UserBelong>  USER_BELONG_MATCHER = MatcherFactory.usingIgnoringFieldsComparator(UserBelong.class, "id", "startpoint", "endpoint");
 
     public static final long TASK1_ID = 1;
     public static final long TASK2_ID = 2;
@@ -54,10 +54,10 @@ public class TaskTestData {
     public static final ActivityTo updatePriorityCode = new ActivityTo(ACTIVITY1_ID + 4, TASK2_ID, USER_ID, null, null, "ready_for_review", "high", "epic", "Trees UPD", "task UPD", 4, null);
     public static final List<ActivityTo> activityTosForTask2 = List.of(updatePriorityCode, activityTo1ForTask2);
 
-    public static final UserBelong userTask1Assignment1 = new UserBelong(1L, TASK, USER_ID, "task_developer");
-    public static final UserBelong userTask1Assignment2 = new UserBelong(1L, TASK, USER_ID, "task_tester");
-    public static final UserBelong userTask2Assignment1 = new UserBelong(2L, TASK, USER_ID, "task_developer");
-    public static final UserBelong userTask2Assignment2 = new UserBelong(2L, TASK, USER_ID, "task_tester");
+    public static final UserBelong userTask1Assignment1 = new UserBelong(TASK1_ID, TASK, USER_ID, "task_developer");
+    public static final UserBelong userTask1Assignment2 = new UserBelong(TASK1_ID, TASK, USER_ID, "task_tester");
+    public static final UserBelong userTask2Assignment1 = new UserBelong(TASK2_ID, TASK, USER_ID, "task_developer");
+    public static final UserBelong userTask2Assignment2 = new UserBelong(TASK2_ID, TASK, USER_ID, "task_tester");
 
     static {
         taskToFull1.setActivityTos(activityTosForTask1);

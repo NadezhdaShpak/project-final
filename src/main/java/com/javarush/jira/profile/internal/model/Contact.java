@@ -45,14 +45,14 @@ public class Contact implements HasId {
 
     @NotBlank
     @Size(min = 2, max = 256)
-    @Column(name = "value", nullable = false)
+    @Column(name = "val", nullable = false)
     @NoHtml
-    private String value;
+    private String val;
 
-    public Contact(long id, String code, String value) {
+    public Contact(long id, String code, String val) {
         this.id = id;
         this.code = code;
-        this.value = value;
+        this.val = val;
     }
 
     @Data

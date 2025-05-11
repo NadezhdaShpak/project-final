@@ -476,18 +476,23 @@ class TaskControllerTest extends AbstractControllerTest {
                 .andExpect(status().isOk())
                 .andDo(print())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-                .andExpect(USER_BELONG_MATCHER.contentJson(userTask1Assignment1, userTask1Assignment2,
-                        userTask2Assignment1, userTask2Assignment2));
+                .andExpect(USER_BELONG_MATCHER.contentJson(
+                        userTask1Assignment1,
+                        userTask1Assignment2,
+                        userTask2Assignment1,
+                        userTask2Assignment2));
     }
 
     @Test
     @WithUserDetails(value = ADMIN_MAIL)
     void assignToTask() throws Exception {
-        perform(MockMvcRequestBuilders.patch(TASKS_REST_URL_SLASH + TASK1_ID + "/assign")
+        perform(MockMvcRequestBuilders.patch(TASKS_REST_URL_SLASH + TASK2_ID + "/assign")
                 .param(USER_TYPE, TASK_DEVELOPER))
                 .andDo(print())
                 .andExpect(status().isNoContent());
-        assertTrue(userBelongRepository.findActiveAssignment(TASK1_ID, TASK, ADMIN_ID, TASK_DEVELOPER).isPresent());
+        assertTrue(userBelongRepository
+                .findActiveAssignment(TASK2_ID, TASK, ADMIN_ID, TASK_DEVELOPER)
+                .isPresent());
     }
 
     @Test

@@ -1,6 +1,7 @@
 package com.javarush.jira.login.internal.web;
 
 import com.javarush.jira.AbstractControllerTest;
+import com.javarush.jira.login.Role;
 import com.javarush.jira.login.User;
 import com.javarush.jira.login.UserTo;
 import com.javarush.jira.login.internal.UserMapper;
@@ -58,15 +59,16 @@ class UserControllerTest extends AbstractControllerTest {
 
     @Test
     void createWithLocation() throws Exception {
-        UserTo newTo = mapper.toTo(getNew());
+        UserTo newTo = mapper.toTo(new User(null, "test@gmail.com", "newPassword", "testFirstName", "testLastName", "newDisplayName", Role.DEV));
         ResultActions action = perform(MockMvcRequestBuilders.post(REST_URL)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(jsonWithPassword(newTo, newTo.getPassword())))
+                .andDo(print())
                 .andExpect(status().isCreated());
 
         User created = USER_MATCHER.readFromJson(action);
         long newId = created.id();
-        User newUser = getNew();
+        User newUser = new User(null, "test@gmail.com", "newPassword", "testFirstName", "testLastName", "newDisplayName", Role.DEV);
         newUser.setId(newId);
         USER_MATCHER.assertMatch(created, newUser);
         USER_MATCHER.assertMatch(repository.getExisted(newId), newUser);

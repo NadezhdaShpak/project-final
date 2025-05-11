@@ -22,5 +22,5 @@ public class ContactTo extends BaseTo {
     @NotBlank
     @Size(min = 2, max = 256)
     @NoHtml
-    private String value;
+    private String val;
 }
