@@ -17,7 +17,7 @@ public class DataSourceConfig {
     @Bean
     @Primary
     @Profile("!test")
-    @ConfigurationProperties("spring.datasource.postgres")
+    @ConfigurationProperties("spring.datasource.hikari")
     public DataSource postgresDataSource() {
         return DataSourceBuilder.create().build();
     }
